@@ -1,7 +1,6 @@
 import { nuevoCliente } from "./API.js";
 import { mostrarAlerta } from "./funciones.js";
 
-
 (function(){
     const formulario = document.querySelector('#formulario');
     formulario.addEventListener('submit', validarCliente);
