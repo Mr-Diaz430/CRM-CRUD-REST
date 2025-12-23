@@ -1,4 +1,6 @@
+import { nuevoCliente } from "./API.js";
 import { mostrarAlerta } from "./funciones.js";
+
 
 (function(){
     const formulario = document.querySelector('#formulario');
@@ -24,7 +26,8 @@ import { mostrarAlerta } from "./funciones.js";
             return;
         }
 
-        console.log('Enviado!');
+        nuevoCliente(cliente);
+
     }
 
     // Valida si los campos del formulario estan vacios.
