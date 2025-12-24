@@ -34,7 +34,6 @@ import { obtenerClientes, eliminarCliente } from "./API.js";
     }
 
     function confirmarEliminar(e) {
-        e.preventDefault();
         if (e.target.classList.contains('eliminar')) {            
             const clienteID = e.target.dataset.cliente;
             const confirmar = confirm('¿Deseas eliminar este registro?');
@@ -44,4 +43,9 @@ import { obtenerClientes, eliminarCliente } from "./API.js";
             }
         }
     }
+
+    function editarClientes(){
+
+    }
+
 })();
