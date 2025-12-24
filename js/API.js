@@ -46,12 +46,20 @@ export const eliminarCliente = async id => {
     }
 }
 
+export const editarCliente = async cliente => {
+   const {id} = cliente;
+   
+    try {
+        await fetch(`${url}/${id}`, {
+            method:'PUT',
+            body: JSON.stringify(cliente),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });    
+        window.location.href = 'index.html';
 
-
-
-
-
-
-
-
-
+    } catch (error) {
+       console.log(error);   
+    }
+}

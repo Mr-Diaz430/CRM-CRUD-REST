@@ -44,8 +44,4 @@ import { obtenerClientes, eliminarCliente } from "./API.js";
         }
     }
 
-    function editarClientes(){
-
-    }
-
 })();

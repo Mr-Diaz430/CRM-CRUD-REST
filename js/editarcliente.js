@@ -1,4 +1,6 @@
-import { obtenerClienteId } from "./API.js";
+import { obtenerClienteId, editarCliente } from "./API.js";
+import { mostrarAlerta } from "./funciones.js";
+
 
 (function() {
     const form = document.querySelector('#formulario');
@@ -9,6 +11,8 @@ import { obtenerClienteId } from "./API.js";
         const cliente = await obtenerClienteId(idCliente);
 
         mostrarCliente(cliente);
+
+        form.addEventListener('submit', validarFormulario);
     })
 
     function mostrarCliente(cliente) {
@@ -45,5 +49,34 @@ import { obtenerClienteId } from "./API.js";
                 \_ Si existe un campo con ese name, le asignas el valor que viene del objeto.
                 \_ Si no existe (porque el objeto tuviera una propiedad de más) simplemente no haces nada → evitas errores.
         */
+    }
+
+    function validarFormulario (e) {
+        e.preventDefault();
+
+        const nombre = document.querySelector('#nombre').value;
+        const email = document.querySelector('#email').value;
+        const telefono = document.querySelector('#telefono').value;
+        const empresa = document.querySelector('#empresa').value;
+        const id = document.querySelector('#id').value;
+    
+        const cliente = {
+            nombre,
+            email,
+            telefono,
+            empresa,
+            id
+        }
+        
+        if ( validarObj(cliente) ) {
+            mostrarAlerta('Todos los campos son obligatorios!');
+            return;
+        }
+
+        editarCliente(cliente);
+    }
+
+    function validarObj(obj) {
+        return !Object.values(obj).every(input => input.trim() !== '');
     }
 })();
